@@ -1,0 +1,37 @@
+# Install package (Run only once)
+install.packages("reshape2")
+
+# Load package
+library(reshape2)
+
+# Load built-in dataset
+data(ChickWeight)
+
+# Display first few rows
+head(ChickWeight)
+
+# Sort dataset by Weight in descending order
+sorted_data <- ChickWeight[order(ChickWeight$weight, decreasing = TRUE), ]
+
+cat("Sorted Data:\n")
+head(sorted_data)
+
+# Melt the dataset
+melted_data <- melt(
+  ChickWeight,
+  id.vars = c("Diet", "Time"),
+  measure.vars = "weight"
+)
+
+cat("Melted Data:\n")
+head(melted_data)
+
+# Cast the data to calculate average weight by Diet
+diet_avg <- dcast(
+  melted_data,
+  Diet ~ variable,
+  mean
+)
+
+cat("Average Weight by Diet:\n")
+print(diet_avg)
