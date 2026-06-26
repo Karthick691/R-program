@@ -1,0 +1,24 @@
+
+install.packages("reshape2")
+library(reshape2)
+
+data(airquality)
+head(airquality)
+
+
+air_melt <- melt(
+  airquality,
+  id.vars = "Month",
+  measure.vars = c("Ozone", "Solar.R", "Wind", "Temp")
+)
+
+print(air_melt)
+
+monthly_avg <- dcast(
+  air_melt,
+  Month ~ variable,
+  mean,
+  na.rm = TRUE
+)
+
+print(monthly_avg)
