@@ -1,0 +1,39 @@
+values <- c(10,15,20,25,30,35,40,45,50)
+sales <- c(120,150,180,170,200)
+months <- c("Jan","Feb","Mar","Apr","May")
+
+# Boxplot
+boxplot(values,
+        main="Boxplot of Values",
+        col="lightblue")
+
+# Histogram
+hist(values,
+     main="Histogram of Values",
+     col="lightgreen")
+
+# Bar Plot
+barplot(sales,
+        names.arg=months,
+        main="Monthly Sales",
+        col="orange")
+
+# Line Chart
+plot(1:5, sales,
+     type="l",
+     xaxt="n",
+     xlab="Months",
+     ylab="Sales",
+     main="Monthly Sales Trend",
+     col="blue")
+axis(1, at=1:5, labels=months)
+
+# Scatter Plot
+plot(1:5, sales,
+     pch=19,
+     xaxt="n",
+     xlab="Months",
+     ylab="Sales",
+     main="Scatter Plot of Sales",
+     col="red")
+axis(1, at=1:5, labels=months)
