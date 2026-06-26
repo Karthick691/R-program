@@ -1,0 +1,49 @@
+# Install package (Run only once)
+install.packages("titanic")
+
+# Load package
+library(titanic)
+
+# Load Titanic dataset
+data("titanic_train")
+
+# Display first few rows
+head(titanic_train)
+
+# -----------------------------
+# 1. Bar Chart: Survival vs Class
+# -----------------------------
+survival_class <- table(titanic_train$Pclass,
+                        titanic_train$Survived)
+
+barplot(survival_class,
+        beside = TRUE,
+        col = c("red", "green"),
+        legend = c("Not Survived", "Survived"),
+        main = "Survival vs Passenger Class",
+        xlab = "Passenger Class",
+        ylab = "Number of Passengers")
+
+# -----------------------------
+# 2. Bar Chart Modified by Gender
+# -----------------------------
+survival_gender <- table(titanic_train$Sex,
+                         titanic_train$Survived)
+
+barplot(survival_gender,
+        beside = TRUE,
+        col = c("orange", "blue"),
+        legend = c("Not Survived", "Survived"),
+        main = "Survival by Gender",
+        xlab = "Gender",
+        ylab = "Number of Passengers")
+
+# -----------------------------
+# 3. Histogram of Age
+# -----------------------------
+hist(titanic_train$Age,
+     breaks = 20,
+     col = "lightblue",
+     main = "Histogram of Age",
+     xlab = "Age",
+     ylab = "Frequency")
