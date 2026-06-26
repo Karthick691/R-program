@@ -1,0 +1,11 @@
+ # 5x4 matrix
+a <- matrix(1:20, 5, 4, byrow = TRUE)
+print(a)
+
+# 3x3 matrix
+b <- matrix(1:9, 3, 3)
+print(b)
+
+# 2x2 matrix
+c <- matrix(1:4, 2, 2, byrow = TRUE)
+print(c)
