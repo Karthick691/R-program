@@ -1,0 +1,44 @@
+# Load built-in dataset
+data(iris)
+
+# Display first few rows
+head(iris)
+
+# 1. Dimensions of dataset
+cat("Dimensions:\n")
+print(dim(iris))
+
+# 2. Summary statistics
+cat("Summary:\n")
+summary(iris)
+
+# 3. Standard deviation of numeric columns
+cat("Standard Deviation:\n")
+sapply(iris[, 1:4], sd)
+
+# 4. Quantiles
+cat("Quantiles:\n")
+sapply(iris[, 1:4], quantile)
+
+# 5. Grouping by Species (Average values)
+cat("Mean values by Species:\n")
+aggregate(. ~ Species, data = iris, mean)
+
+# 6. Pivot Table (Average Sepal.Length by Species)
+pivot_table <- aggregate(Sepal.Length ~ Species,
+                         data = iris,
+                         mean)
+
+cat("Pivot Table:\n")
+print(pivot_table)
+
+# 7. Create categories for Sepal.Length
+iris$Sepal.Category <- cut(
+  iris$Sepal.Length,
+  breaks = c(4, 5.5, 6.5, 8),
+  labels = c("Short", "Medium", "Long")
+)
+
+# Count flowers in each category
+cat("Sepal Length Categories:\n")
+table(iris$Sepal.Category)
