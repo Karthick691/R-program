@@ -1,0 +1,18 @@
+
+install.packages("abind")
+
+library(abind)
+
+array1 <- array(1:8, dim = c(2, 2, 2))
+array2 <- array(9:16, dim = c(2, 2, 2))
+
+print("Array 1:")
+print(array1)
+
+print("Array 2:")
+print(array2)
+
+combined_array <- abind(array1, array2, along = 1)
+
+print("Combined Array:")
+print(combined_array)
