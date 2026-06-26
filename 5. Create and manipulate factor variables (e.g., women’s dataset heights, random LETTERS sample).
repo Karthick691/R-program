@@ -1,0 +1,7 @@
+x <- c("A", "B", "A", "C", "B")
+
+f <- factor(x)
+
+print(f)
+
+print(levels(f))
