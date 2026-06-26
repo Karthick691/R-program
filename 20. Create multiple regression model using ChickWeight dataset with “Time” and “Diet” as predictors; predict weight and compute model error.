@@ -1,0 +1,33 @@
+# Load built-in dataset
+data(ChickWeight)
+
+# Display first few rows
+head(ChickWeight)
+
+# Convert Diet to a factor
+ChickWeight$Diet <- as.factor(ChickWeight$Diet)
+
+# Build Multiple Linear Regression Model
+model <- lm(weight ~ Time + Diet, data = ChickWeight)
+
+# Display model summary
+summary(model)
+
+# Predict Weight using the model
+predicted_weight <- predict(model)
+
+# Add predictions to dataset
+ChickWeight$Predicted_Weight <- predicted_weight
+
+# Display first few predictions
+head(ChickWeight)
+
+# Compute Model Error (Mean Squared Error)
+mse <- mean((ChickWeight$weight - predicted_weight)^2)
+
+cat("Mean Squared Error (MSE):", mse, "\n")
+
+# Compute Root Mean Squared Error (RMSE)
+rmse <- sqrt(mse)
+
+cat("Root Mean Squared Error (RMSE):", rmse, "\n")
