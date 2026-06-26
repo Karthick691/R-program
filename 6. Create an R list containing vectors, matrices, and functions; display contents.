@@ -1,0 +1,6 @@
+a <- c(1,2,3)
+b <- matrix(1:4,2,2)
+c <- function(x) x*2
+
+l <- list(a,b,c)
+print(l)
