@@ -1,0 +1,48 @@
+# Load built-in dataset
+data(iris)
+
+# Convert Species into binary classes
+iris$Species <- ifelse(iris$Species == "setosa", "setosa", "Non-setosa")
+iris$Species <- as.factor(iris$Species)
+
+# Split dataset into 80% Train and 20% Test
+set.seed(123)
+
+index <- sample(1:nrow(iris), 0.8 * nrow(iris))
+
+train <- iris[index, ]
+test <- iris[-index, ]
+
+# Build Logistic Regression Model
+model <- glm(Species ~ Petal.Length + Petal.Width,
+             data = train,
+             family = binomial)
+
+# Display model summary
+summary(model)
+
+# Predict probabilities
+prob <- predict(model,
+                newdata = test,
+                type = "response")
+
+# Convert probabilities into class labels
+prediction <- ifelse(prob > 0.5,
+                     "setosa",
+                     "Non-setosa")
+
+prediction <- as.factor(prediction)
+
+# Confusion Matrix
+confusion_matrix <- table(
+  Actual = test$Species,
+  Predicted = prediction
+)
+
+print(confusion_matrix)
+
+# Calculate Accuracy
+accuracy <- sum(diag(confusion_matrix)) /
+  sum(confusion_matrix)
+
+cat("Accuracy =", accuracy * 100, "%")
