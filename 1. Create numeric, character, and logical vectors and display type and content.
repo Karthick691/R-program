@@ -1,0 +1,9 @@
+num<-c(10,20,30)
+
+char<-c("apple","banana")
+
+logi<-c(TRUE, FALSE, TRUE)
+
+print(typeof(num))
+print(typeof(char))
+print(typeof(logi))
