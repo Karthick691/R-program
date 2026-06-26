@@ -1,0 +1,6 @@
+# Read a CSV file
+
+data <- read.csv("exam_data.csv")
+
+# Display the contents of the CSV file
+print(data)
